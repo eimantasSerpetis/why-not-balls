@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312d78ff4f6533c48a8552c031554fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 50
-  minForce: -50
+  maxForce: 55
+  minForce: -55
   maxSpeed: 50
   mainCamera: {fileID: 1676930448}
 --- !u!50 &559511616
