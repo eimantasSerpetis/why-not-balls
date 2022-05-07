@@ -11,12 +11,12 @@ public class CameraController : MonoBehaviour
     public float maxFOV;
     private Vector3 velocity;
     private float zoomVelocity;
-    Camera camera;
+    Camera cam;
 
     // Start is called before the first frame update
     void Awake()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
         velocity = Vector3.zero;
         zoomVelocity = 0;
 
@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
 
         Vector3 target = new Vector3(bodyToFollow.position.x, bodyToFollow.position.y, transform.position.z);
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, FollowSmoothTime);
-        camera.fieldOfView = Mathf.SmoothDamp(camera.fieldOfView, bodyToFollow.velocity.magnitude, ref zoomVelocity, ZoomSmoothTime);
+        cam.fieldOfView = Mathf.SmoothDamp(cam.fieldOfView, bodyToFollow.velocity.magnitude, ref zoomVelocity, ZoomSmoothTime);
         
     }
 

@@ -8,9 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public float maxForce = 5;
     public float minForce = 0;
     public float maxSpeed = 50;
+    public float slowdownFactor = 0.05f;
     public Camera mainCamera;
+    public TimeController timeController;
     Rigidbody2D myBody;
     Vector2 startPos, endPos;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -29,17 +32,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            myBody.bodyType = RigidbodyType2D.Static;
             startPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            timeController.doSlowmotion(slowdownFactor);
         }
         if(Input.GetMouseButtonUp(0))
         {
-            myBody.bodyType = RigidbodyType2D.Dynamic;
             endPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 force = new Vector2(
                 Mathf.Clamp(startPos.x - endPos.x, minForce, maxForce),
                 Mathf.Clamp(startPos.y - endPos.y, minForce, maxForce));
             myBody.AddForce(force, ForceMode2D.Impulse);
+            timeController.undoSlowmotion();
         }
 
     }
