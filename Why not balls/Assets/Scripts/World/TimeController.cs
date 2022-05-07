@@ -8,6 +8,7 @@ public class TimeController : MonoBehaviour
     public void doSlowmotion(float slowdownFactor)
     {
         Time.timeScale = slowdownFactor;
+        Time.fixedDeltaTime = Time.timeScale * 0.2f;
     }
     public void undoSlowmotion()
     {

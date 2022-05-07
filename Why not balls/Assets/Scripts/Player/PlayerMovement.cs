@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(0))
         {
+            myBody.velocity = Vector2.zero;
             endPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 force = new Vector2(
                 Mathf.Clamp(startPos.x - endPos.x, minForce, maxForce),
