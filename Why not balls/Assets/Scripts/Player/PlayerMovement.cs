@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
                 Mathf.Clamp(startPos.y - endPos.y, minForce, maxForce));
             //deal with trajectory
             Vector3[] trajectory = PlotForLine(myBody, transform.position, force, trjLinePointCount, slowdownFactor);
-            lr.positionCount = trjLinePointCount;
+            lr.positionCount = trajectory.Length;
             lr.SetPositions(trajectory);
             lr.enabled = true;
 
@@ -74,7 +74,10 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3[] PlotForLine(Rigidbody2D myBody, Vector2 position, Vector2 velocity, int steps, float timeScale)
     {
-        Vector3[] results = new Vector3[steps];
+        // in order to make the trajectory line always start from the object itself, we need
+        // to include the initial position of the object in the plot. We include one more entry in the plot
+        Vector3[] results = new Vector3[steps + 1];
+        results[0] = new Vector3(position.x, position.y, 0.5f);
         float timestep = Time.fixedDeltaTime / timeScale / Physics2D.velocityIterations;
         // calculate the forces
         Vector2 gravityAcc = Physics2D.gravity * myBody.gravityScale * timestep * timestep;
@@ -83,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 moveStep = velocity * timestep;
 
-        for(int i = 0; i < steps; i++)
+        for(int i = 1; i < steps + 1; i++)
         {
             moveStep += gravityAcc;
             moveStep *= drag;

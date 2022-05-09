@@ -226,7 +226,7 @@ MonoBehaviour:
   maxForce: 55
   minForce: -55
   maxSpeed: 50
-  slowdownFactor: 0.1
+  slowdownFactor: 0.15
   trjLinePointCount: 50
   mainCamera: {fileID: 1676930448}
   timeController: {fileID: 1511598529}
