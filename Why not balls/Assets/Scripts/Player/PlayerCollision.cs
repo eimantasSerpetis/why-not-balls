@@ -6,9 +6,19 @@ public class PlayerCollision : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Lava")
+        switch(collision.gameObject.tag)
         {
-            Destroy(gameObject);
+            case "Lava":
+                Destroy(gameObject);
+                break;
+            case "SpikeBall":
+                Destroy(gameObject);
+                break;
+            case "ScoreBall":
+                Destroy(collision.gameObject);
+                break;
+            default:
+                break;
         }
     }
 
