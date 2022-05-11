@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lava
+  - SpikeBall
+  - ScoreBall
+  - StartZone
   layers:
   - Default
   - TransparentFX
