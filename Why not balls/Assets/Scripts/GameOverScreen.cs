@@ -18,6 +18,6 @@ public class GameOverScreen : MonoBehaviour
     }
     public void ExitButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainMenu");
     }      
 }

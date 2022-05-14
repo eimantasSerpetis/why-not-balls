@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public GameOverScreen GameOverScreen;
-    public int score = 11;
+    public int score = 0;
     private Rigidbody2D rb;
     private void Start()
     {
@@ -22,6 +22,7 @@ public class PlayerCollision : MonoBehaviour
                 Die();
                 break;
             case "ScoreBall":
+                score += 1;
                 Destroy(collision.gameObject);
                 break;
             default:
@@ -31,8 +32,8 @@ public class PlayerCollision : MonoBehaviour
     private void Die()
     {
         Time.timeScale = 0;
-        gameObject.SetActive(false);
         GameOverScreen.Setup(score);
+        gameObject.SetActive(false);
     }
 
 }
