@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 1747365023}
-  score: 11
+  score: 0
 --- !u!1 &656346052
 GameObject:
   m_ObjectHideFlags: 0
