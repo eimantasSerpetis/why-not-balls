@@ -11,9 +11,9 @@ public class PlayerCollision : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        switch (collision.gameObject.tag)
+        switch (collider.gameObject.tag)
         {
             case "Lava":
                 Die();
@@ -23,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
                 break;
             case "ScoreBall":
                 score += 1;
-                Destroy(collision.gameObject);
+                Destroy(collider.gameObject);
                 break;
             default:
                 break;
