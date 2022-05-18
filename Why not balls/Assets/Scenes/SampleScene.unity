@@ -830,6 +830,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 1747365023}
   score: 0
+  yForceCoeficient: 1
+  xForceCoeficient: 0.5
+  minBounceForceY: 6
+  maxBounceForceY: 12
 --- !u!1 &656346052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,8 +1726,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008566224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0026, y: -5.9322, z: 0}
-  m_LocalScale: {x: 1.7613266, y: 0.22027388, z: 1.4684925}
+  m_LocalPosition: {x: 0.0026, y: -11.3291, z: 0}
+  m_LocalScale: {x: 1.7613266, y: 11.014022, z: 1.4684925}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
