@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
     public float maxFOV;
     private Vector3 velocity;
     private float zoomVelocity;
+    private float minSize;
+    public float maxSize;
     Camera cam;
 
     // Start is called before the first frame update
@@ -19,6 +21,8 @@ public class CameraController : MonoBehaviour
         cam = GetComponent<Camera>();
         velocity = Vector3.zero;
         zoomVelocity = 0;
+        minSize = cam.orthographicSize;
+
 
     }
 
@@ -29,8 +33,14 @@ public class CameraController : MonoBehaviour
 
         Vector3 target = new Vector3(bodyToFollow.position.x, bodyToFollow.position.y, transform.position.z);
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, FollowSmoothTime);
-        cam.fieldOfView = Mathf.SmoothDamp(cam.fieldOfView, bodyToFollow.velocity.magnitude, ref zoomVelocity, ZoomSmoothTime);
-        
+        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, map(bodyToFollow.velocity.magnitude, 0, 25, minSize, maxSize) , ref zoomVelocity, ZoomSmoothTime);
+        //cam.orthographicSize = Mathf.Lerp (minZoom, maxZoom, Mathf.InverseLerp (0.0f, 50, bodyToFollow.velocity.magnitude));
+
+    }
+
+    public static float map(float value, float leftMin, float leftMax, float rightMin, float rightMax)
+    {
+        return rightMin + (value - leftMin) * (rightMax - rightMin) / (leftMax - leftMin);
     }
 
 

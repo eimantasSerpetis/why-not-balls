@@ -61,11 +61,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 startPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 timeController.doSlowmotion(slowdownFactor);
-                if (!startedMoving)
-                {
-                    startedMoving = true;
-                    Timer.startTimer();
-                }
+                
             }
             if (Input.GetMouseButton(0))
             {
@@ -91,6 +87,11 @@ public class PlayerMovement : MonoBehaviour
                 myBody.AddForce(force, ForceMode2D.Impulse);
                 timeController.undoSlowmotion();
                 lr.enabled = false;
+                if (!startedMoving)
+                {
+                    startedMoving = true;
+                    Timer.startTimer();
+                }
             }
 
         }
