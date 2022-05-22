@@ -7,8 +7,6 @@ public class PlayerCollision : MonoBehaviour
     public GameOverScreen GameOverScreen;
     public TimerController Timer;
     public PlayerMovement movementController;
-    public int score = 0;
-    
 
     private Rigidbody2D rb;
     private void Start()
@@ -26,7 +24,7 @@ public class PlayerCollision : MonoBehaviour
                 Die();
                 break;
             case "ScoreBall":
-                score += 1;
+                ScoreController.scoreValue += 1;
                 Destroy(collider.gameObject);
                 Timer.restartTimer();  
                 movementController.RedirectUpwards();
@@ -39,8 +37,11 @@ public class PlayerCollision : MonoBehaviour
     private void Die()
     {
         Time.timeScale = 0;
-        GameOverScreen.Setup(score);
+        GameOverScreen.Setup(ScoreController.scoreValue);
         Timer.Disable();
+        ScoreController.restartScore();
+        ScoreController.Disable();
+
         gameObject.SetActive(false);
     }
 
