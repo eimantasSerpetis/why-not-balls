@@ -656,15 +656,21 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Die
-    clip: {fileID: 0}
-    volume: 0.332
-    pitch: 1
+    clip: {fileID: 8300000, guid: d5c32618814f78649bc7eda2067fd552, type: 3}
+    volume: 0.234
+    pitch: 1.13
     loop: 0
     source: {fileID: 0}
   - name: Jump
-    clip: {fileID: 0}
-    volume: 0.332
-    pitch: 1
+    clip: {fileID: 8300000, guid: 90182a817bc5ce3469e0258bcef2b023, type: 3}
+    volume: 0.164
+    pitch: 1.27
+    loop: 0
+    source: {fileID: 0}
+  - name: Score
+    clip: {fileID: 8300000, guid: 0005c26959309694a8a0d46138a756ea, type: 3}
+    volume: 0.164
+    pitch: 1.27
     loop: 0
     source: {fileID: 0}
 --- !u!4 &1380462260

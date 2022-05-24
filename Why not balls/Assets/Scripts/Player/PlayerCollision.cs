@@ -9,10 +9,10 @@ public class PlayerCollision : MonoBehaviour
     public PlayerMovement movementController;
 
     private Rigidbody2D rb;
-    AudioManager audio;
+    AudioManager audioManager;
     void Awake()
     {
-        audio = FindObjectOfType<AudioManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
     private void Start()
     {
@@ -23,15 +23,15 @@ public class PlayerCollision : MonoBehaviour
         switch (collider.gameObject.tag)
         {
             case "Lava":
-                audio.Play("Die");
+                audioManager.Play("Die");
                 Die();
                 break;
             case "SpikeBall":
-                audio.Play("Die");
+                audioManager.Play("Die");
                 Die();
                 break;
             case "ScoreBall":
-                audio.Play("Score");
+                audioManager.Play("Score");
                 ScoreController.scoreValue += 1;
                 Destroy(collider.gameObject);
                 Timer.restartTimer();  
