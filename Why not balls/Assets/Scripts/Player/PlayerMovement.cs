@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public TimerController Timer;
 
     bool controllable;
+    AudioManager audioManager;
 
 
 
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         myBody = GetComponent<Rigidbody2D>();
         lr = GetComponent<LineRenderer>();
         lr.enabled = false;
+        audioManager = FindObjectOfType<AudioManager>();
 
 
     }
@@ -92,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
                     startedMoving = true;
                     Timer.startTimer();
                 }
+                audioManager.Play("Jump");
             }
 
         }

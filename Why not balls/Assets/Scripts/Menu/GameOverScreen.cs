@@ -19,5 +19,15 @@ public class GameOverScreen : MonoBehaviour
     public void ExitButton()
     {
         SceneManager.LoadScene("MainMenu");
-    }      
+    } 
+
+    public void PlayHoverSound()
+    {
+        FindObjectOfType<AudioManager>().Play("hoverOnButton");
+    }
+
+    public void PlaySelectSound()
+    {
+        FindObjectOfType<AudioManager>().Play("clickOnButton");
+    }     
 }

@@ -10,4 +10,14 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void PlayHoverSound()
+    {
+        FindObjectOfType<AudioManager>().Play("hoverOnButton");
+    }
+
+    public void PlaySelectSound()
+    {
+        FindObjectOfType<AudioManager>().Play("clickOnButton");
+    }
+
 }
