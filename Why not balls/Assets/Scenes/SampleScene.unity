@@ -875,6 +875,8 @@ MonoBehaviour:
   GameOverScreen: {fileID: 1747365023}
   Timer: {fileID: 1074528920}
   movementController: {fileID: 559511615}
+  scoreBallExplosion: {fileID: 8093563330930036318, guid: d085b19db0f1034498d69e0e6065916f, type: 3}
+  playerExplosion: {fileID: 6542672707141246013, guid: 7db3ac22908517449a228d8885584f95, type: 3}
 --- !u!1 &656346052
 GameObject:
   m_ObjectHideFlags: 0
