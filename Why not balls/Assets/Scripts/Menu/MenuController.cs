@@ -9,7 +9,10 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
-
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     public void PlayHoverSound()
     {
         FindObjectOfType<AudioManager>().Play("hoverOnButton");
