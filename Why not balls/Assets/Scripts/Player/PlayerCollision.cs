@@ -7,6 +7,8 @@ public class PlayerCollision : MonoBehaviour
     public GameOverScreen GameOverScreen;
     public TimerController Timer;
     public PlayerMovement movementController;
+    public GameObject scoreBallExplosion;
+    public GameObject playerExplosion;
 
     private Rigidbody2D rb;
     AudioManager audioManager;
@@ -24,15 +26,18 @@ public class PlayerCollision : MonoBehaviour
         {
             case "Lava":
                 audioManager.Play("Die");
+                Instantiate(playerExplosion, transform.position, transform.rotation);
                 Die();
                 break;
             case "SpikeBall":
                 audioManager.Play("Die");
+                Instantiate(playerExplosion, transform.position, transform.rotation);
                 Die();
                 break;
             case "ScoreBall":
                 audioManager.Play("Score");
                 ScoreController.scoreValue += 1;
+                Instantiate(scoreBallExplosion, collider.gameObject.transform.position, collider.gameObject.transform.rotation);
                 Destroy(collider.gameObject);
                 Timer.restartTimer();  
                 movementController.RedirectUpwards();
