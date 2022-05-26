@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
+    public float globalVolume;
     void Awake()
     {
         if(instance == null)
@@ -17,6 +18,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        globalVolume = 1;
         DontDestroyOnLoad(gameObject);
         foreach(Sound s in sounds)
         {
@@ -25,6 +27,14 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+        }
+    }
+    public void UpdateVolumes(float volume)
+    {
+        globalVolume = volume;
+        foreach(Sound s in sounds)
+        {
+            s.source.volume = s.volume * volume;
         }
     }
 

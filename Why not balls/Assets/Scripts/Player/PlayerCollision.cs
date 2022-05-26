@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class PlayerCollision : MonoBehaviour
     }
     private void Die()
     {
-        Time.timeScale = 0;
+        StartCoroutine(ExecuteAfterTime(0.5f, () =>{ ChangeTime(); }));
         GameOverScreen.Setup(ScoreController.scoreValue);
         Timer.Disable();
         ScoreController.restartScore();
@@ -57,5 +58,18 @@ public class PlayerCollision : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
+    private bool isCoroutineExecuting = false;
+    IEnumerator ExecuteAfterTime(float time, Action task)
+    {
+        if (isCoroutineExecuting)
+            yield break;
+        isCoroutineExecuting = true;
+        yield return new WaitForSeconds(time);
+        task();
+        isCoroutineExecuting = false;
+    }
+    private void ChangeTime()
+    {
+        Time.timeScale = 0;
+    }
 }
