@@ -40,6 +40,7 @@ public class PlayerCollision : MonoBehaviour
                 ScoreController.scoreValue += 1;
                 Instantiate(scoreBallExplosion, collider.gameObject.transform.position, collider.gameObject.transform.rotation);
                 Destroy(collider.gameObject);
+                BallSpawner.scoreBallCount -= 1;
                 Timer.restartTimer();  
                 movementController.RedirectUpwards();
                 movementController.makeControllable();
